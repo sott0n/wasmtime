@@ -22,7 +22,13 @@ wiggle = { path = "../wiggle", version = "0.29.0" }
 
 # These dependencies are necessary for the wasi-nn implementation:
 openvino = { version = "0.3.1", features = ["runtime-linking"] }
+#heim = "0.1.0-rc.1"
+#tvm = "0.1.1-alpha"
+tvm = { git = "https://github.com/sott0n/tvm", rev = "1dd392c1b4669091aa502b6b20b0c5b4592fa56b"}
 thiserror = "1.0"
+
+#[patch.crates-io]
+#tvm-build = { git = "https://github.com/sott0n/tvm-build" }
 
 [build-dependencies]
 walkdir = "2.3"

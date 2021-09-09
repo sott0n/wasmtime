@@ -3,6 +3,7 @@
 use crate::api::{Backend, BackendError, BackendExecutionContext, BackendGraph};
 use crate::openvino::OpenvinoBackend;
 use crate::r#impl::UsageError;
+use crate::tvm::TvmBackend;
 use crate::witx::types::{Graph, GraphEncoding, GraphExecutionContext};
 use std::cell::RefCell;
 use std::collections::HashMap;
@@ -26,6 +27,11 @@ impl Ctx {
             // `Hash` and `Eq`.
             GraphEncoding::Openvino.into(),
             Box::new(OpenvinoBackend::default()) as Box<dyn Backend>,
+        );
+        backends.insert(
+            GraphEncoding::Tvm.into(),
+            // TODO: Replace to tvm backend.
+            Box::new(TvmBackend::default()) as Box<dyn Backend>,
         );
         Ok(Self {
             backends,
